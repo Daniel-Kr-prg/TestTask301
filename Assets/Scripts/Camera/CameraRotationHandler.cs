@@ -4,56 +4,56 @@ using UnityEngine;
 
 public class CameraRotationHandler : CameraFeature
 {
-    public float rotateSpeed = 5f; 
-
-    private Vector2 moveDirection;
+    [SerializeField]
+    private float _rotateSpeed = 5f;
 
     [SerializeField]
-    private float minPitch;
+    private float _mouseMoveMultiplier = 5f;
 
-    [SerializeField] 
-    private float maxPitch;
+    private bool _mouseIsDown = false;
 
-    Transform cameraPivot;
 
-    public override void Start()
+    private Vector2 _moveDirection;
+
+    protected override void ApplyEffectToCamera()
     {
-        base.Start();
-        cameraPivot = cameraHandler.GetCameraPivot();
-
-        if (cameraPivot == null)
+        if (options.IsPitchClampAllowed)
         {
-            Debug.LogWarning("Camera pivot is null");
-            return;
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            HandleMouseMove();
+            _moveDirection.x = Mathf.Clamp(_moveDirection.x, options.MinPitch, options.MaxPitch);
         }
 
-        HandleCameraMove();
-    }
+        if (options.IsYawClampAllowed)
+        {
+            _moveDirection.y = Mathf.Clamp(_moveDirection.y, options.MinYaw, options.MaxYaw);
+        }
 
-    private void HandleMouseMove()
-    {
-        moveDirection.y += Input.GetAxis("Mouse X") * rotateSpeed;
-        moveDirection.x -= Input.GetAxis("Mouse Y") * rotateSpeed;
-
-        moveDirection.x = Mathf.Clamp(moveDirection.x, minPitch, maxPitch);
-    }
-
-    private void HandleCameraMove()
-    {
-        Quaternion rotation = Quaternion.Euler(moveDirection.x, moveDirection.y, 0);
-        cameraPivot.rotation = Quaternion.Lerp(cameraPivot.rotation, rotation, rotateSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.Euler(_moveDirection.x, _moveDirection.y, 0);
+        cameraPivot.rotation = Quaternion.Lerp(cameraPivot.rotation, rotation, _rotateSpeed * Time.deltaTime);
 
         Vector3 rot = cameraPivot.rotation.eulerAngles;
         rot.z = 0;
 
         cameraPivot.rotation = Quaternion.Euler(rot);
+    }
+
+    protected override void OnMouseMoveHandle()
+    {
+        if (!_mouseIsDown)
+        {
+            return;
+        }
+
+        _moveDirection.y += Input.GetAxis("Mouse X") * _mouseMoveMultiplier;
+        _moveDirection.x -= Input.GetAxis("Mouse Y") * _mouseMoveMultiplier;
+    }
+
+    protected override void OnMouseDownHandle()
+    {
+        _mouseIsDown = true;
+    }
+
+    protected override void OnMouseUpHandle()
+    {
+        _mouseIsDown = false;
     }
 }

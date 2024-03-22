@@ -33,13 +33,18 @@ public class CameraHandler : MonoBehaviour
     /// Default camera target
     /// </summary>
     [Header("Target"), SerializeField]
-    private Transform _defaultTarget;
+    private CameraTargetOptions _defaultTarget;
 
     /// <summary>
     /// Current camera target
     /// </summary>
     [SerializeField]
-    private Transform _target;
+    private Transform _targetTransform;
+
+    /// <summary>
+    /// target options for camera
+    /// </summary>
+    public CameraTargetOptions cameraTargetOptions { get; private set; }
 
     /// <summary>
     /// Time for camera to go idle
@@ -53,6 +58,33 @@ public class CameraHandler : MonoBehaviour
     /// </summary>
     private float _currentIdleTime;
 
+    /// <summary>
+    /// Event used by camera handler features to invoke mouse down
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent mouseDownEvent = new UnityEvent();
+
+    /// <summary>
+    /// Event used by camera handler features to invoke mouse up
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent mouseUpEvent = new UnityEvent();
+
+    /// <summary>
+    /// Event used by camera handler features to invoke mouse scroll
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent mouseScrollEvent = new UnityEvent();
+
+    /// <summary>
+    /// Event used by camera handler features to invoke mouse move
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent mouseMoveEvent = new UnityEvent();
+
+    /// <summary>
+    /// returns camera state. On state change invokes CameraStateChanged event
+    /// </summary>
     public CameraState state
     {
         get
@@ -69,11 +101,17 @@ public class CameraHandler : MonoBehaviour
         }
     }
     private CameraState _cameraState;
-    
+
+    /// <summary>
+    /// Event invoked on state change
+    /// </summary>
+    [HideInInspector]
     public UnityEvent<CameraState> cameraStateChanged;
 
     private void Awake()
     {
+        // Set CameraHandler as singleton object
+
         if (instance == null)
         {
             instance = this;
@@ -87,6 +125,7 @@ public class CameraHandler : MonoBehaviour
 
     void Start()
     {
+        // Handle null objects
         if (_defaultTarget == null)
         {
             Debug.LogError("Default Target object was not set.");
@@ -97,11 +136,14 @@ public class CameraHandler : MonoBehaviour
             Debug.LogError("Target Camera was not set.");
             return;
         }
+
         _cameraHandlerIsAvailable = true;
 
+        // Restart idle timer
         UpdateIdleTime();
         
-        if (_target == null)
+        // if no specific target was set, then use default target
+        if (_targetTransform == null)
         {
             SetTargetToDefault();
             Debug.LogWarning("Target is null. Default target was chosen");
@@ -115,6 +157,7 @@ public class CameraHandler : MonoBehaviour
             return;
         }
 
+        // Check if any control was pressed and update idle time
         if (Input.anyKey)
         {
             UpdateIdleTime();
@@ -124,12 +167,27 @@ public class CameraHandler : MonoBehaviour
         UpdateCameraState();
     }
 
+    /// <summary>
+    /// </summary>
+    /// <returns>Camera pivot point, which is it orbiting around</returns>
     public Transform GetCameraPivot()
     {
         return _cameraPivot;
     }
 
-    public void SetTarget(Transform newTarget)
+    /// <summary>
+    /// </summary>
+    /// <returns>Handled camera object</returns>
+    public Camera GetOrbitingCamera()
+    {
+        return _orbitingCamera;
+    }
+
+    /// <summary>
+    /// Set new target for camera to orbit around
+    /// </summary>
+    /// <param name="newTarget">GameObject with CameraTargetOptions component</param>
+    public void SetTarget(CameraTargetOptions newTarget)
     {
         if (newTarget == null)
         {
@@ -137,19 +195,35 @@ public class CameraHandler : MonoBehaviour
             return;
         }
 
-        _target = newTarget;
+        cameraTargetOptions = newTarget;
+        _targetTransform = newTarget.transform;
     }
 
+    /// <summary>
+    /// </summary>
+    /// <returns>Target transform</returns>
     public Transform GetTarget()
     {
-        return _target.transform;
+        if (_targetTransform == null)
+            SetTargetToDefault();
+
+        return _targetTransform.transform;
     }
 
+    /// <summary>
+    /// </summary>
+    /// <returns>Target transform position copy</returns>
     public Vector3 GetTargetPosition()
     {
-        return new Vector3(_target.position.x, _target.position.y, _target.position.z);
+        if (_targetTransform == null)
+            SetTargetToDefault();
+
+        return new Vector3(_targetTransform.position.x, _targetTransform.position.y, _targetTransform.position.z);
     }
 
+    /// <summary>
+    /// Set current target to the default target
+    /// </summary>
     public void SetTargetToDefault()
     {
         if (!_cameraHandlerIsAvailable)
@@ -160,7 +234,11 @@ public class CameraHandler : MonoBehaviour
         SetTarget(_defaultTarget);
     }
 
-    public void SetDefaultTarget(Transform newDefaultTarget)
+    /// <summary>
+    /// Change default target
+    /// </summary>
+    /// <param name="newDefaultTarget">GameObject with CameraTargetOptions component</param>
+    public void SetDefaultTarget(CameraTargetOptions newDefaultTarget)
     {
         if (newDefaultTarget == null)
         {
@@ -188,11 +266,29 @@ public class CameraHandler : MonoBehaviour
         }
     }
 
-    public Camera GetOrbitingCamera()
+    // Events invoke
+
+    public void MouseDownInvoke()
     {
-        return _orbitingCamera;
+        mouseDownEvent.Invoke();
+    }
+
+    public void MouseUpInvoke()
+    {
+        mouseUpEvent.Invoke();
+    }
+
+    public void MouseMoveInvoke()
+    {
+        mouseMoveEvent.Invoke();
+    }
+
+    public void MouseScrollInvoke()
+    {
+        mouseScrollEvent.Invoke();
     }
 }
+
 
 public enum CameraState
 {

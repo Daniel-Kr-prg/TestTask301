@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Attachment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private List<Transform> attachmentInstanceContainers;
+
+    [SerializeField]
+    CameraTargetOptions cameraTarget;
+
+    public CameraTargetOptions GetCameraTarget()
     {
-        
+        return cameraTarget;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void SetAttachment(GameObject attachmentPrefab)
     {
-        
+        foreach (Transform t in attachmentInstanceContainers)
+        {
+            if (t.childCount != 0)
+            {
+                Destroy(t.GetChild(0).gameObject);
+            }
+
+            Instantiate(attachmentPrefab, t);
+        }
     }
 }
