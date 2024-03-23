@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CarScript : MonoBehaviour
+public class CarRoot : MonoBehaviour
 {
     [SerializeField]
     public Material carPaintMaterial;

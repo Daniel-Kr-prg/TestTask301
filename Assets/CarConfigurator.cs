@@ -1,23 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarConfigurator : MonoBehaviour
 {
-    [SerializeField]
-    private CarScript selectedCar;
-
+    [Header("Components")]
     [SerializeField, Space]
     private Transform carContainer;
 
-    private List<GameObject> carList = new List<GameObject>();
+    [SerializeField]
+    private UIHandler ConfiguratorUI;
+
 
     [Header("Car paint settings")]
 
     [SerializeField]
     private float materialChangeSpeed;
+    
+    
+    private CarRoot selectedCar;
 
+    //private CarConfiguration carConfiguration;
+
+    private TuningCategory selectedCategory;
+
+    private Material selectedMaterial;
+
+    private List<GameObject> _carList = new List<GameObject>();
+    
     private Car car
     {
         get { return selectedCar?.GetCar(); }
@@ -30,96 +43,126 @@ public class CarConfigurator : MonoBehaviour
 
         foreach (GameObject car in cars)
         {
-            if (car.GetComponent<CarScript>() == null)
+            if (car.GetComponent<CarRoot>() == null)
                 continue;
 
-            carList.Add(car);
+            _carList.Add(car);
         }
 
-        ResetMaterial();
         SetCar(0);
+        ConfiguratorUI.CreateCarSelectionUI();
     }
 
     private void OnApplicationQuit()
     {
-        ResetMaterial();
+        foreach (GameObject car in _carList)
+        {
+            ResetMaterial(car.GetComponent<CarRoot>());
+        }
     }
-
 
     public void SetCar(int carIndex)
     {
-        if (carList == null)
+        if (_carList == null)
         {
             Debug.LogError("Can't set car, car list is not set");
             return;
         }
-        if (carIndex < 0 || carIndex >= carList.Count)
+        if (carIndex < 0 || carIndex >= _carList.Count)
         {
             Debug.LogError("Can't set car, car index is out of bounds");
             return;
         }
-        GameObject newCar = carList[carIndex];
+        GameObject newCar = _carList[carIndex];
 
         if (selectedCar != null)
         {
             Destroy(selectedCar.gameObject);
         }
 
-        selectedCar = Instantiate(newCar, carContainer).GetComponent<CarScript>();
+        selectedCar = Instantiate(newCar, carContainer).GetComponent<CarRoot>();
+        //carConfiguration.carCode = car.description.code;
     }
 
-    public void ApplyAttachment(string categoryCode, string attachmentCode)
+    public CarRoot GetSelectedCar()
     {
-        //TuningCategory category = car.tu
+        return selectedCar;
     }
 
-    public void ApplyMaterial(CarMaterial material)
+    public List<GameObject> GetCarList()
     {
-        if (material == null)
+        GameObject[] returnList = new GameObject[_carList.Count];
+        _carList.CopyTo(returnList);
+
+        return returnList.ToList();
+    }
+
+    //private void HandleComponentApply(TuningComponent tuningComponent)
+    //{
+    //    if (tuningComponent == null)
+    //    {
+    //        Debug.LogError("Can't apply tuning, because tuning item is null");
+    //        return;
+    //    }
+
+    //    if (tuningComponent.isDefault && carConfiguration.appliedComponents.ContainsKey(selectedCategoryCode))
+    //    {
+    //        carConfiguration.appliedComponents.Remove(selectedCategoryCode);
+    //    }
+    //    else
+    //    {
+    //        if (carConfiguration.appliedComponents.ContainsKey(selectedCategoryCode))
+    //        {
+    //            carConfiguration.appliedComponents[selectedCategoryCode] = tuningComponent.description.code;
+    //        }
+    //        else
+    //        {
+    //            carConfiguration.appliedComponents.Add(selectedCategoryCode, tuningComponent.description.code);
+    //        }
+    //    }
+    //}
+
+    public void Apply(TuningComponent tuningItem)
+    {
+        selectedCategory.categoryAttachment.SetAttachment(tuningItem.tuningItemPrefab);
+    }
+
+    public void Apply(CarMaterial material)
+    {
+        selectedMaterial = material.material;
+    }
+
+    public void SelectCategory(TuningCategory category)
+    {
+        selectedCategory = category;
+        CameraHandler.instance.SetTarget(selectedCategory.categoryAttachment.GetCameraTarget());
+    }
+
+    private void ResetMaterial(CarRoot carScript)
+    {
+        if (carScript == null)
         {
-            Debug.LogError("Can't apply paint material, because material parameter is null");
             return;
         }
-        car.tuning.selectedMaterial = material;
-    }
+        Car car = carScript.GetCar();
 
-    public void ApplyMaterialByIndex(int materialIndex)
-    {
-        if (materialIndex > 0 && materialIndex < car.tuning.carMaterials.Count)
+        if (car == null)
         {
-            ApplyMaterial(car.tuning.carMaterials[materialIndex]);
-        }
-    }
-
-    public void ApplyMaterialByCode(string materialCode)
-    {
-        if (materialCode == null || materialCode == "")
-        {
-            Debug.LogWarning("Material code is null");
             return;
         }
 
-        CarMaterial material = car.tuning.carMaterials.Find(x => x.materialCode.Equals(materialCode));
-        ApplyMaterial(material);
-    }
+        CarMaterial defaultMaterial = car.defaultMaterial;
 
-
-    private void ResetMaterial()
-    {
-        if (selectedCar != null && car != null && car.tuning != null && car.tuning.carMaterials.Count > 0)
-        {
-            Material defaultMaterial = car.tuning.carMaterials[0].material;
-            selectedCar.carPaintMaterial.CopyPropertiesFromMaterial(defaultMaterial);
-        }
+        selectedCar.carPaintMaterial.CopyPropertiesFromMaterial(defaultMaterial.material);
     }
 
     public void Update()
     {
-        if (car == null || car.tuning.selectedMaterial == null || car.tuning.selectedMaterial.material == null)
+        if (car == null || selectedMaterial == null)
         {
             return;
         }
 
-        selectedCar.carPaintMaterial.Lerp(selectedCar.carPaintMaterial, car.tuning.selectedMaterial.material, materialChangeSpeed);
+        selectedCar.carPaintMaterial.Lerp(selectedCar.carPaintMaterial, selectedMaterial, materialChangeSpeed);
     }
 }
