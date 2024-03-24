@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "Tuning/Paint")]
-public class CarMaterial : TuningAppliaple
+[System.Serializable, CreateAssetMenu(menuName = "Tuning/Paint")]
+public class CarMaterial : TuningAppliaple, ITuningElement
 {
     public Material material;
 
-    public override void ApplyTuning(CarConfigurator configurator)
+    public override void ApplyTuning(CarObject carObject)
     {
-        configurator.Apply(this);
+        carObject.Apply(this);
     }
 
-    public override void GetElementType(ITuningElementsHandler tuningHandler)
+    public void GetElementType(ITuningElementsHandler tuningHandler)
     {
         tuningHandler.HandleElementType(this);
     }

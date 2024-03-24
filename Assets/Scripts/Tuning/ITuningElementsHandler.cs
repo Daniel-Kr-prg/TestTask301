@@ -6,5 +6,9 @@ public interface ITuningElementsHandler
 {
     public void HandleElementType(TuningComponent tuningComponent);
     public void HandleElementType(CarMaterial carMaterial);
-    public void HandleElementType(TuningCategory tuningCategory);
+}
+
+public interface ITuningElement
+{
+    public void GetElementType(ITuningElementsHandler tuningHandler);
 }

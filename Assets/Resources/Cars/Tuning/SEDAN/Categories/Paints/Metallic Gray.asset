@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Colors
-  m_EditorClassIdentifier: Assembly-CSharp::TuningCategory
+  m_Script: {fileID: 11500000, guid: 577594cc550d3e54aa8958e8c552dd4d, type: 3}
+  m_Name: Metallic Gray
+  m_EditorClassIdentifier: 
+  isSelected: 0
   description:
-    name: 
+    name: Gray
     preview: {fileID: 0}
-  categoryAttachment: {fileID: 0}
+  material: {fileID: 2100000, guid: 84ff8b76061080a4c962cdb20bd8e70f, type: 2}

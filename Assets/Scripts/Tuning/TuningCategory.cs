@@ -1,22 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 
-[System.Serializable, CreateAssetMenu(menuName = "Tuning/Category")]
-public class TuningCategory : TuningBase
+[System.Serializable]
+public class TuningCategory : TuningList
 {
-    public List<TuningBase> elements = new List<TuningBase>();
+    [SerializeField]
+    private TuningAppliaple defaultItem;
 
-    public Attachment categoryAttachment;
+    public List<TuningAppliaple> tuningItems = new List<TuningAppliaple>();
 
-    public override void GetElementType(ITuningElementsHandler tuningHandler)
+    [SerializeField]
+    private Attachment attachment;
+
+    public void ApplyDefaults()
     {
-        tuningHandler.HandleElementType(this);
+        SetSelectedItem(defaultItem);
+        foreach (TuningCategory category in categories)
+        {
+            category.ApplyDefaults();
+        }
+    }
+    
+    public void SetSelectedItem(TuningAppliaple newSelected)
+    {
+        foreach (TuningAppliaple item in tuningItems)
+        {
+            item.isSelected = false;
+        }
+        newSelected.isSelected = true;
     }
 
+    public TuningAppliaple GetDefaultItem()
+    {
+        return defaultItem;
+    }
+
+    public Attachment GetAttachmentPoint()
+    {
+        return attachment;
+    }
     //public TuningComponent GetComponentByCode(string code)
     //{
     //    return components.Find(x => x.description.code.Equals(code));
     //}
+}
+
+[System.Serializable]
+public class TuningList
+{
+    public Description description;
+    public List<TuningCategory> categories = new List<TuningCategory>();
 }

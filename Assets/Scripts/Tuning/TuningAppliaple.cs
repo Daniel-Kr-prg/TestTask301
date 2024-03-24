@@ -5,6 +5,5 @@ using UnityEngine;
 
 public abstract class TuningAppliaple : TuningBase
 {
-    public bool isDefault;
-    public virtual void ApplyTuning(CarConfigurator configurator) { }
+    public virtual void ApplyTuning(CarObject carObject) { }
 }

@@ -6,14 +6,10 @@ using UnityEngine;
 /// <summary>
 /// Class for usage in car configurator.
 /// </summary
-[System.Serializable]
-public class Car : TuningBase
+[System.Serializable/*, CreateAssetMenu(menuName = "Tuning/Car")*/]
+public class Car : TuningList
 {
-    public new CarDescription description;
-
     public CarMaterial defaultMaterial;
-
-    public List<TuningBase> elements = new List<TuningBase>();
 
     //public TuningCategory GetCategoryByCode(string code)
     //{

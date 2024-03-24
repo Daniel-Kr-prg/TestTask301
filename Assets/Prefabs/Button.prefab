@@ -436,5 +436,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   itemImage: {fileID: 7804879650571846109}
-  selectedImageObject: {fileID: 0}
+  selectedImageObject: {fileID: 3406090204133060958}
   itemText: {fileID: 1131310945973289482}

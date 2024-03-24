@@ -15,6 +15,8 @@ public class UIItem : MonoBehaviour
 
     public TMP_Text itemText;
 
+    public TuningBase connectedItem;
+
     public void InvokeButtonPress()
     {
         if (buttonPressEvent != null)
@@ -36,5 +38,13 @@ public class UIItem : MonoBehaviour
     public void SetSelected(bool value)
     {
         selectedImageObject.SetActive(value);
+    }
+
+    public void UpdateUI()
+    {
+        if (connectedItem != null)
+        {
+            SetSelected(connectedItem.isSelected);
+        }
     }
 }

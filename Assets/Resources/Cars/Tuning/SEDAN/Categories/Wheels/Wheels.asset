@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577594cc550d3e54aa8958e8c552dd4d, type: 3}
-  m_Name: Metallic gray
+  m_Script: {fileID: 11500000, guid: f1fab9f5eb4868548901d7ebe547d0d6, type: 3}
+  m_Name: Wheels
   m_EditorClassIdentifier: 
+  isSelected: 0
   description:
     name: 
     preview: {fileID: 0}
-  isDefault: 0
-  isSelected: 0
-  material: {fileID: 0}
+  tuningItemPrefab: {fileID: 6968601522287364761, guid: 7104939257dc16d4bad6dfa77b6ce437, type: 3}

@@ -20,14 +20,11 @@ public class CarConfigurator : MonoBehaviour
     [SerializeField]
     private float materialChangeSpeed;
     
-    
-    private CarRoot selectedCar;
+    private CarObject selectedCar;
 
     //private CarConfiguration carConfiguration;
 
     private TuningCategory selectedCategory;
-
-    private Material selectedMaterial;
 
     private List<GameObject> _carList = new List<GameObject>();
     
@@ -43,7 +40,7 @@ public class CarConfigurator : MonoBehaviour
 
         foreach (GameObject car in cars)
         {
-            if (car.GetComponent<CarRoot>() == null)
+            if (car.GetComponent<CarObject>() == null)
                 continue;
 
             _carList.Add(car);
@@ -52,15 +49,6 @@ public class CarConfigurator : MonoBehaviour
         SetCar(0);
         ConfiguratorUI.CreateCarSelectionUI();
     }
-
-    private void OnApplicationQuit()
-    {
-        foreach (GameObject car in _carList)
-        {
-            ResetMaterial(car.GetComponent<CarRoot>());
-        }
-    }
-
     public void SetCar(int carIndex)
     {
         if (_carList == null)
@@ -80,11 +68,14 @@ public class CarConfigurator : MonoBehaviour
             Destroy(selectedCar.gameObject);
         }
 
-        selectedCar = Instantiate(newCar, carContainer).GetComponent<CarRoot>();
+        selectedCar = Instantiate(newCar, carContainer).GetComponent<CarObject>();
+
+        selectedCar.SetDefaults();
+        ResetMaterial();
         //carConfiguration.carCode = car.description.code;
     }
 
-    public CarRoot GetSelectedCar()
+    public CarObject GetSelectedCar()
     {
         return selectedCar;
     }
@@ -122,47 +113,31 @@ public class CarConfigurator : MonoBehaviour
     //    }
     //}
 
-    public void Apply(TuningComponent tuningItem)
-    {
-        selectedCategory.categoryAttachment.SetAttachment(tuningItem.tuningItemPrefab);
-    }
-
-    public void Apply(CarMaterial material)
-    {
-        selectedMaterial = material.material;
-    }
+    
 
     public void SelectCategory(TuningCategory category)
     {
         selectedCategory = category;
-        CameraHandler.instance.SetTarget(selectedCategory.categoryAttachment.GetCameraTarget());
+        CameraHandler.instance.SetTarget(selectedCategory.GetAttachmentPoint()?.GetCameraTarget());
     }
 
-    private void ResetMaterial(CarRoot carScript)
+    public void ApplyTuning(TuningAppliaple item)
     {
-        if (carScript == null)
-        {
-            return;
-        }
-        Car car = carScript.GetCar();
+        selectedCar.ApplyTuningItem(selectedCategory, item);
+    }
 
-        if (car == null)
-        {
-            return;
-        }
-
-        CarMaterial defaultMaterial = car.defaultMaterial;
-
-        selectedCar.carPaintMaterial.CopyPropertiesFromMaterial(defaultMaterial.material);
+    private void ResetMaterial()
+    {
+        selectedCar.carPaintMaterial.CopyPropertiesFromMaterial(selectedCar.selectedMaterial);
     }
 
     public void Update()
     {
-        if (car == null || selectedMaterial == null)
+        if (selectedCar == null || selectedCar.selectedMaterial == null)
         {
             return;
         }
 
-        selectedCar.carPaintMaterial.Lerp(selectedCar.carPaintMaterial, selectedMaterial, materialChangeSpeed);
+        selectedCar.carPaintMaterial.Lerp(selectedCar.carPaintMaterial, selectedCar.selectedMaterial, materialChangeSpeed);
     }
 }
