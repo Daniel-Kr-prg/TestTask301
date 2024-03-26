@@ -8,17 +8,21 @@ using UnityEngine;
 [System.Serializable]
 public class TuningCategory : TuningList
 {
-    [SerializeField]
+
+    [Header("Tuning items"), SerializeField]
     private TuningAppliaple defaultItem;
 
+    [Space]
     public List<TuningAppliaple> tuningItems = new List<TuningAppliaple>();
 
-    [SerializeField]
+    [SerializeField, Space]
     private Attachment attachment;
 
     public void ApplyDefaults()
     {
-        SetSelectedItem(defaultItem);
+        if (defaultItem != null)
+            SetSelectedItem(defaultItem);
+
         foreach (TuningCategory category in categories)
         {
             category.ApplyDefaults();
@@ -52,6 +56,10 @@ public class TuningCategory : TuningList
 [System.Serializable]
 public class TuningList
 {
-    public Description description;
+    public string name;
+
     public List<TuningCategory> categories = new List<TuningCategory>();
+    
+    [Header("Description")]
+    public Sprite preview;
 }

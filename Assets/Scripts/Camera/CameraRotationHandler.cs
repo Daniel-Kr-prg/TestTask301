@@ -13,21 +13,21 @@ public class CameraRotationHandler : CameraFeature
     private bool _mouseIsDown = false;
 
 
-    private Vector2 _moveDirection;
+    private Vector2 _targetRotation;
 
     protected override void ApplyEffectToCamera()
     {
         if (options.IsPitchClampAllowed)
         {
-            _moveDirection.x = Mathf.Clamp(_moveDirection.x, options.MinPitch, options.MaxPitch);
+            _targetRotation.x = Mathf.Clamp(_targetRotation.x, options.MinPitch, options.MaxPitch);
         }
 
         if (options.IsYawClampAllowed)
         {
-            _moveDirection.y = Mathf.Clamp(_moveDirection.y, options.MinYaw, options.MaxYaw);
+            _targetRotation.y = Mathf.Clamp(_targetRotation.y, options.MinYaw, options.MaxYaw);
         }
 
-        Quaternion rotation = Quaternion.Euler(_moveDirection.x, _moveDirection.y, 0);
+        Quaternion rotation = Quaternion.Euler(_targetRotation.x, _targetRotation.y, 0);
         cameraPivot.rotation = Quaternion.Lerp(cameraPivot.rotation, rotation, _rotateSpeed * Time.deltaTime);
 
         Vector3 rot = cameraPivot.rotation.eulerAngles;
@@ -43,8 +43,8 @@ public class CameraRotationHandler : CameraFeature
             return;
         }
 
-        _moveDirection.y += Input.GetAxis("Mouse X") * _mouseMoveMultiplier;
-        _moveDirection.x -= Input.GetAxis("Mouse Y") * _mouseMoveMultiplier;
+        _targetRotation.y += Input.GetAxis("Mouse X") * _mouseMoveMultiplier;
+        _targetRotation.x -= Input.GetAxis("Mouse Y") * _mouseMoveMultiplier;
     }
 
     protected override void OnMouseDownHandle()
@@ -55,5 +55,11 @@ public class CameraRotationHandler : CameraFeature
     protected override void OnMouseUpHandle()
     {
         _mouseIsDown = false;
+    }
+
+    protected override void OnTargetChanged()
+    {
+        _targetRotation.x = options.DefaultPitch;
+        _targetRotation.y = options.DefaultYaw;
     }
 }

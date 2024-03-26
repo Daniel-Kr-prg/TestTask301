@@ -46,6 +46,7 @@ public class CarObject : MonoBehaviour
     {
         foreach (TuningCategory category in car.categories)
         {
+            category.ApplyDefaults();
             ApplyTuningItem(category, category.GetDefaultItem());
         }
     }

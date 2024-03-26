@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CameraZoomHandler : CameraFeature
 {
@@ -21,7 +17,6 @@ public class CameraZoomHandler : CameraFeature
     {
         base.Start();
         cameraTransform = cameraHandler.GetOrbitingCamera().transform;
-        targetZoomValue = cameraTransform.position.z;
     }
 
     protected override void OnMouseScrollHandle()
@@ -48,5 +43,10 @@ public class CameraZoomHandler : CameraFeature
             cameraTransform.localPosition.y,
             distance
         );
+    }
+
+    protected override void OnTargetChanged()
+    {
+        targetZoomValue = options.DefaultZoomDistance;
     }
 }

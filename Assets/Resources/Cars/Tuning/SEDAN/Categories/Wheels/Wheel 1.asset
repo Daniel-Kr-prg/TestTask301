@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fab9f5eb4868548901d7ebe547d0d6, type: 3}
+  m_Name: Wheel 1
+  m_EditorClassIdentifier: 
+  itemName: Wheel 1
+  preview: {fileID: 21300000, guid: c89c02bb0d1254d4da334d819d0e805c, type: 3}
+  isSelected: 0
+  tuningItemPrefab: {fileID: 2804151552660573241, guid: 89e9fb28fc37bd44cbbca2f75da8316c, type: 3}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fab9f5eb4868548901d7ebe547d0d6, type: 3}
+  m_Name: Default brake
+  m_EditorClassIdentifier: 
+  itemName: Standard
+  preview: {fileID: 21300000, guid: 06d1449f2f8768a43b305e7df3f6b4fe, type: 3}
+  isSelected: 0
+  tuningItemPrefab: {fileID: 3912695163291825465, guid: d1cdf83ded7ac0c4394182d82c32d6f2, type: 3}

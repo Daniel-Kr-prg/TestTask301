@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577594cc550d3e54aa8958e8c552dd4d, type: 3}
   m_Name: Metallic Pink
   m_EditorClassIdentifier: 
+  itemName: Metallic Pink
+  preview: {fileID: 21300000, guid: 143d83ad08b5ed04781c76a9d7ecc6f8, type: 3}
   isSelected: 0
-  description:
-    name: Pink
-    preview: {fileID: 0}
   material: {fileID: 2100000, guid: 006d641e630cc3b42b8dc8d2390e43e6, type: 2}

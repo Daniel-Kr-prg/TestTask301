@@ -1,14 +1,11 @@
 using DanielLochner.Assets.SimpleScrollSnap;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static UnityEditor.Rendering.FilterWindow;
 
-public class UIHandler : MonoBehaviour, ITuningElementsHandler
+public class UIHandler : MonoBehaviour
 {
     [SerializeField]
     private SimpleScrollSnap _scrollSnap;
@@ -19,8 +16,6 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
     [SerializeField]
     private CarConfigurator configurator;
 
-    private UnityEvent backButtonEvent = new UnityEvent();
-
     [SerializeField]
     private Button backButton;
 
@@ -30,8 +25,6 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
     [SerializeField]
     private Button nextButton;
 
-    private TuningCategory selectedCategory;
-
     private List<UnityAction> MenuStack = new List<UnityAction>();
 
     public void CreateCarSelectionUI()
@@ -39,15 +32,21 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
         List<Car> cars = configurator.GetCarList().Select(c => c.GetComponent<CarObject>().GetCar()).ToList();
 
         ResetScrollSnap();
+        CameraHandler.instance.SetTargetToDefault();
+
+        _scrollSnap.OnPanelCentered.RemoveAllListeners();
+        _scrollSnap.OnPanelCentered.AddListener(ScrollViewSelectCar);
+
+        configurator.SetCar(0);
 
         for (int i = 0; i < cars.Count; i++)
         {
             Car car = cars[i];
 
-            CreateUIItem(car.description, null, () => 
+            CreateElement(car, () => 
             {
                 configurator.SetCar(cars.IndexOf(car));
-                CreateListUI(car);
+                CreateListUI(configurator.GetSelectedCar().GetCar());
                 UpdateList();
 
                 MenuStack.Add(() =>
@@ -64,12 +63,15 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
     public void CreateListUI(TuningList list)
     {
         ResetScrollSnap();
+        CameraHandler.instance.SetTargetToDefault();
+
+        _scrollSnap.OnPanelCentered.RemoveAllListeners();
+        _scrollSnap.OnPanelCentered.AddListener(ScrollViewSelectItem);
 
         foreach (var categoryItem in list.categories)
         {
-            CreateUIItem(categoryItem.description, null, () =>
+            CreateElement(categoryItem, () =>
             {
-                selectedCategory = categoryItem;
                 configurator.SelectCategory(categoryItem);
                 CreateTuningCategoryUI(categoryItem);
                 UpdateList();
@@ -88,17 +90,29 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
     public void CreateTuningCategoryUI(TuningCategory category)
     {
         ResetScrollSnap();
+        CameraHandler.instance.SetTarget(category.GetAttachmentPoint()?.GetCameraTarget());
+
+        _scrollSnap.OnPanelCentered.RemoveAllListeners();
+        _scrollSnap.OnPanelCentered.AddListener(ScrollViewSelectItem);
 
         foreach (var item in category.tuningItems)
         {
-            (item as ITuningElement).GetElementType(this);
+            if (item.isSelected)
+                _scrollSnap.GoToPanel(category.tuningItems.IndexOf(item));
+
+            CreateElement(item, () =>
+            {
+                _scrollSnap.GoToPanel(category.tuningItems.IndexOf(item));
+                SelectComponent(configurator, item);
+                UpdateList();
+            });
         }
         foreach (var categoryItem in category.categories)
         {
-            CreateUIItem(categoryItem.description, null, () =>
+            CreateElement(categoryItem, () =>
             {
-                selectedCategory = categoryItem;
                 configurator.SelectCategory(categoryItem);
+
                 CreateTuningCategoryUI(categoryItem);
                 UpdateList();
 
@@ -112,20 +126,6 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
         backButton.enabled = true;
         HandleMoveButtons();
     }
-
-    //public void CreateTuningElementsUI(List<TuningAppliaple> tuningItems)
-    //{
-    //    ResetScrollSnap();
-        
-    //    foreach (var item in tuningItems)
-    //    {
-    //        (item as ITuningElement).GetElementType(this);
-    //    }
-
-    //    backButton.enabled = true;
-    //    HandleMoveButtons();
-    //}
-
     private void ResetScrollSnap()
     {
         while (_scrollSnap.Content.childCount > 0)
@@ -143,16 +143,42 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
         nextButton.enabled = _scrollSnap.Content.childCount > 0;
     }
 
-    private void CreateUIItem(Description config, TuningBase connectedItem, UnityAction call)
+    public void ScrollViewSelectCar(int newVal, int oldVal)
+    {
+        configurator.SetCar(newVal);
+    }
+
+    public void ScrollViewSelectItem(int newVal, int oldVal)
+    {
+        UIItem item = _scrollSnap.Content.GetChild(newVal).GetComponent<UIItem>();
+        if (item != null && item.connectedItem != null)
+        {
+            item.buttonPressEvent.Invoke();
+        }
+    }
+
+    private void CreateElement(TuningBase connectedItem, UnityAction call)
     {
         _scrollSnap.AddToBack(UIItemPrefab);
 
         UIItem item = _scrollSnap.Content.GetChild(_scrollSnap.Content.childCount - 1).GetComponent<UIItem>();
         
-        item.SetText(config.name);
-        item.SetImage(config.preview);
+        item.SetText(connectedItem.itemName);
+        item.SetImage(connectedItem.preview);
 
         item.connectedItem = connectedItem;
+
+        item.buttonPressEvent.AddListener(call);
+    }
+
+    private void CreateElement(TuningList listItem, UnityAction call)
+    {
+        _scrollSnap.AddToBack(UIItemPrefab);
+
+        UIItem item = _scrollSnap.Content.GetChild(_scrollSnap.Content.childCount - 1).GetComponent<UIItem>();
+
+        item.SetText(listItem.name);
+        item.SetImage(listItem.preview);
 
         item.buttonPressEvent.AddListener(call);
     }
@@ -183,23 +209,5 @@ public class UIHandler : MonoBehaviour, ITuningElementsHandler
                 uiItem.UpdateUI();
             }
         }
-    }
-
-    public void HandleElementType(TuningComponent tuningComponent)
-    {
-        CreateUIItem(tuningComponent.description, tuningComponent, () => 
-        { 
-            SelectComponent(configurator, tuningComponent);
-            UpdateList();
-        });
-    }
-
-    public void HandleElementType(CarMaterial carMaterial)
-    {
-        CreateUIItem(carMaterial.description, carMaterial, () => 
-        { 
-            SelectComponent(configurator, carMaterial);
-            UpdateList();
-        });
     }
 }

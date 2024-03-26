@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fab9f5eb4868548901d7ebe547d0d6, type: 3}
+  m_Name: Scoop 1 carbon
+  m_EditorClassIdentifier: 
+  itemName: Scoop 1 Carbon
+  preview: {fileID: 21300000, guid: f61bc7c1f199ce249b7424cb3fd81fc5, type: 3}
+  isSelected: 0
+  tuningItemPrefab: {fileID: 6902960443166962852, guid: 398f0ef3d8c3f544f9e70eb142c74e5c, type: 3}

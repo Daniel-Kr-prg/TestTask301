@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Timeline;
 
 public class CameraHandler : MonoBehaviour
 {
@@ -108,6 +109,12 @@ public class CameraHandler : MonoBehaviour
     [HideInInspector]
     public UnityEvent<CameraState> cameraStateChanged;
 
+    /// <summary>
+    /// Event invoked by changing target
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent targetChanged;
+
     private void Awake()
     {
         // Set CameraHandler as singleton object
@@ -121,10 +128,7 @@ public class CameraHandler : MonoBehaviour
             Debug.LogWarning("There must be only one camera handler on scene. Destroying new instance");
             Destroy(gameObject);
         }
-    }
 
-    void Start()
-    {
         // Handle null objects
         if (_defaultTarget == null)
         {
@@ -141,12 +145,11 @@ public class CameraHandler : MonoBehaviour
 
         // Restart idle timer
         UpdateIdleTime();
-        
+
         // if no specific target was set, then use default target
         if (_targetTransform == null)
         {
             SetTargetToDefault();
-            Debug.LogWarning("Target is null. Default target was chosen");
         }
     }
 
@@ -191,12 +194,15 @@ public class CameraHandler : MonoBehaviour
     {
         if (newTarget == null)
         {
-            Debug.LogWarning("New target value is null, can't set new camera target.");
+            SetTargetToDefault();
             return;
         }
 
+
         cameraTargetOptions = newTarget;
         _targetTransform = newTarget.transform;
+
+        targetChanged?.Invoke();
     }
 
     /// <summary>
@@ -226,7 +232,7 @@ public class CameraHandler : MonoBehaviour
     /// </summary>
     public void SetTargetToDefault()
     {
-        if (!_cameraHandlerIsAvailable)
+        if (!_cameraHandlerIsAvailable || _defaultTarget == null)
         {
             Debug.LogWarning("Camera Handler was not initialized");
             return;

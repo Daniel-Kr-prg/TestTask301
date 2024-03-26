@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attachment : MonoBehaviour
 {
     [SerializeField]
-    private List<Transform> attachmentInstanceContainers;
+    private List<GameObject> attachmentInstanceContainers;
 
     [SerializeField]
     CameraTargetOptions cameraTarget;
@@ -17,14 +17,15 @@ public class Attachment : MonoBehaviour
 
     public virtual void SetAttachment(GameObject attachmentPrefab)
     {
-        foreach (Transform t in attachmentInstanceContainers)
+        foreach (GameObject t in attachmentInstanceContainers)
         {
-            if (t.childCount != 0)
+            foreach (Transform child in t.transform)
             {
-                Destroy(t.GetChild(0).gameObject);
+                Destroy(child.gameObject);
             }
 
-            Instantiate(attachmentPrefab, t);
+            if (attachmentPrefab != null)
+                Instantiate(attachmentPrefab, t.transform);
         }
     }
 }
