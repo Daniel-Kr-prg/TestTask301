@@ -1,7 +1,6 @@
 using DanielLochner.Assets.SimpleScrollSnap;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
