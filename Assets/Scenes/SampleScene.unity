@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 137665225}
   - component: {fileID: 137665227}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Items list
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2046,10 +2046,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 137665224}
   - {fileID: 822609046}
   - {fileID: 581276050}
   - {fileID: 313634629}
-  - {fileID: 137665224}
   - {fileID: 1116567006}
   - {fileID: 1456393637}
   m_Father: {fileID: 1874904359}
@@ -2596,7 +2596,19 @@ MonoBehaviour:
       m_Calls: []
   onPanelCentered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1594124968}
+        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
+        m_MethodName: ScrollViewSelectItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1677589184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5447277539240650060, guid: 6f511a07473123d4094ef56ae50c6360, type: 3}
@@ -2911,50 +2923,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767470861}
   m_CullTransparentMesh: 1
---- !u!1 &1799364942
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1799364943}
-  - component: {fileID: 1799364944}
-  m_Layer: 0
-  m_Name: PreviewExport
-  m_TagString: EditorOnly
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1799364943
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799364942}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1799364944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799364942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101ef2d3c8569f74abb4f01f757f9270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1806871191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,4 +3205,3 @@ SceneRoots:
   - {fileID: 512832503}
   - {fileID: 1874904359}
   - {fileID: 994730556}
-  - {fileID: 1799364943}

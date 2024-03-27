@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c2e4b9352d2c445a3a2c1890399b04, type: 3}
+  m_Name: Exhaust
+  m_EditorClassIdentifier: 
+  itemName: Exhaust
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 23403661279232
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  preview: {fileID: 21300000, guid: c13f83c7db122fa4cb4dbf5f168e89ba, type: 3}
+  isSelected: 0
+  defaultItem: {fileID: 11400000, guid: 56baa9ad4c2a4d745adfad97096b6d88, type: 2}
+  tuningItems:
+  - {fileID: 11400000, guid: 56baa9ad4c2a4d745adfad97096b6d88, type: 2}
+  - {fileID: 11400000, guid: 6748d71596f0c0f479f273457f99385d, type: 2}
+  - {fileID: 11400000, guid: 038474adb2ada114eb28aefdaf4859a2, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -9,30 +9,67 @@ using UnityEngine.UI;
 
 public class UIItem : MonoBehaviour
 {
-    public UnityEvent buttonPressEvent;
+    /// <summary>
+    /// Event called on mouse press
+    /// </summary>
+    public UnityEvent buttonPressEvent = new UnityEvent();
 
+    /// <summary>
+    /// Event called on select event in ScrollSnap
+    /// </summary>
+    public UnityEvent itemSelectEvent = new UnityEvent();
+
+    /// <summary>
+    /// Image to be shown on the item
+    /// </summary>
     [SerializeField]
     private Image itemImage;
 
+    /// <summary>
+    /// Image showing that the item is selected
+    /// </summary>
     [SerializeField]
     private GameObject selectedImageObject;
 
+    /// <summary>
+    /// The name of the item
+    /// </summary>
     [SerializeField]
     private TMP_Text itemText;
 
+    /// <summary>
+    /// Connected tuning component
+    /// </summary>
     public TuningBase connectedItem;
 
-
-    public void SetItem(Sprite image, string text, LocalizedString localStr, TuningBase connectedItem, UnityAction call)
+    /// <summary>
+    /// Initialize the UI item
+    /// </summary>
+    /// <param name="connectedItem">Connected tuning component</param>
+    /// <param name="pressCall">Event called on press</param>
+    /// <param name="selectCall">Event called on scrollsnap select event</param>
+    public void SetItem(TuningBase connectedItem, UnityAction pressCall, UnityAction selectCall)
     {
-        SetText(text);
-        SetLocalizationReference(localStr);
+        if (connectedItem != null)
+        {
+            SetText(connectedItem.itemName);
+            SetLocalizationReference(connectedItem.localStr);
 
-        SetImage(image);
-        this.connectedItem = connectedItem;
+            SetImage(connectedItem.preview);
+            this.connectedItem = connectedItem;
+        }
 
         buttonPressEvent.RemoveAllListeners();
-        buttonPressEvent.AddListener(call);
+        if (pressCall != null)
+        {
+            buttonPressEvent.AddListener(pressCall);
+        }
+
+        itemSelectEvent.RemoveAllListeners();
+        if (selectCall != null)
+        {
+            itemSelectEvent.AddListener(selectCall);
+        }
     }
 
     public void InvokeButtonPress()

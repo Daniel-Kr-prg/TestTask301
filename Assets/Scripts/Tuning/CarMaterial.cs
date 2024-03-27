@@ -8,8 +8,8 @@ public class CarMaterial : TuningAppliaple
 {
     public Material material;
 
-    public override void ApplyTuning(CarObject carObject)
+    public override void ApplyTuning(Car carObject, TuningCategory category)
     {
-        carObject.Apply(this);
+        carObject.selectedMaterial = material;
     }
 }

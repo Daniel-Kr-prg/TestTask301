@@ -1,66 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Localization;
 
-[System.Serializable]
-public class TuningCategory : TuningList
+public class TuningCategory : MonoBehaviour
 {
+    /// <summary>
+    /// Inner tuning categories
+    /// </summary>
+    [SerializeField]
+    private List<TuningCategory> childCategories;
 
-    [Header("Tuning items"), SerializeField]
-    private TuningAppliaple defaultItem;
+    /// <summary>
+    /// Containers where tuning prefabs are instantiated
+    /// </summary>
+    [SerializeField]
+    private List<GameObject> tuningInstanceContainers;
 
-    [Space]
-    public List<TuningAppliaple> tuningItems = new List<TuningAppliaple>();
+    /// <summary>
+    /// Tuning category data scriptable object
+    /// </summary>
+    [SerializeField]
+    private TuningCategoryData tuningCategoryData;
 
-    [SerializeField, Space]
-    private Attachment attachment;
+    /// <summary>
+    /// Focus point used by camera handler
+    /// </summary>
+    [SerializeField]
+    CameraTargetOptions cameraTarget;
 
-    public void ApplyDefaults()
+    public CameraTargetOptions GetCameraTarget()
     {
-        if (defaultItem != null)
-            SetSelectedItem(defaultItem);
+        return cameraTarget;
+    }
 
-        foreach (TuningCategory category in categories)
+    public void InstantiateTuning(GameObject tuningPrefab)
+    {
+        foreach (GameObject t in tuningInstanceContainers)
         {
-            category.ApplyDefaults();
+            foreach (Transform child in t.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            if (tuningPrefab != null)
+                Instantiate(tuningPrefab, t.transform);
         }
     }
-    
-    public void SetSelectedItem(TuningAppliaple newSelected)
+
+    public TuningCategoryData GetCategoryData()
     {
-        foreach (TuningAppliaple item in tuningItems)
+        return tuningCategoryData;
+    }
+
+    public List<TuningCategory> GetChildCategories()
+    {
+        return childCategories;
+    }
+
+    public void SelectTuningItem(Car car, int itemIndex)
+    {
+        if (tuningCategoryData == null)
         {
-            item.isSelected = false;
+            return;
         }
-        newSelected.isSelected = true;
+
+        TuningAppliaple item = tuningCategoryData.tuningItems[Mathf.Clamp(itemIndex, 0, tuningCategoryData.tuningItems.Count - 1)];
+        SelectTuningItem(car, item);
     }
 
-    public TuningAppliaple GetDefaultItem()
+    public void SelectTuningItem(Car car, TuningAppliaple item)
     {
-        return defaultItem;
+        if (tuningCategoryData == null)
+        {
+            return;
+        }
+
+        tuningCategoryData.GetSelectedItem()?.RemoveTuning(car, this);
+        tuningCategoryData.SetSelectedItem(item);
+        item?.ApplyTuning(car, this);
     }
 
-    public Attachment GetAttachmentPoint()
+    public void SetDefault(Car car)
     {
-        return attachment;
+        if (tuningCategoryData == null)
+        {
+            return;
+        }
+
+        SelectTuningItem(car, tuningCategoryData.GetDefaultItem());
     }
-    //public TuningComponent GetComponentByCode(string code)
-    //{
-    //    return components.Find(x => x.description.code.Equals(code));
-    //}
-}
-
-[System.Serializable]
-public class TuningList
-{
-    public string name;
-    public LocalizedString localStr;
-
-    public List<TuningCategory> categories = new List<TuningCategory>();
-    
-    [Header("Description")]
-    public Sprite preview;
 }

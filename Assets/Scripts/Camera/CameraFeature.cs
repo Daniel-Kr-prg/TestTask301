@@ -15,8 +15,6 @@ public class CameraFeature : MonoBehaviour
         }
     }
 
-    private bool effectIsActive = true;
-
     private bool _initialized;
 
     public virtual void Start()

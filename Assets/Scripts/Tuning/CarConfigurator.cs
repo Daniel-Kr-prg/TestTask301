@@ -20,17 +20,11 @@ public class CarConfigurator : MonoBehaviour
     [SerializeField]
     private float materialChangeSpeed;
     
-    private CarObject selectedCar;
+    private Car currentCar;
 
     private TuningCategory selectedCategory;
 
     private List<GameObject> _carList = new List<GameObject>();
-    
-    private Car car
-    {
-        get { return selectedCar?.GetCar(); }
-    }
-
 
     private void Start()
     {
@@ -38,7 +32,7 @@ public class CarConfigurator : MonoBehaviour
 
         foreach (GameObject car in cars)
         {
-            if (car.GetComponent<CarObject>() == null)
+            if (car.GetComponent<Car>() == null)
                 continue;
 
             _carList.Add(car);
@@ -47,6 +41,10 @@ public class CarConfigurator : MonoBehaviour
         SetCar(0);
         ConfiguratorUI.CreateCarSelectionUI();
     }
+
+    /// <summary>
+    /// Set the car for configurator by its index
+    /// </summary>
     public void SetCar(int carIndex)
     {
         if (_carList == null)
@@ -61,22 +59,25 @@ public class CarConfigurator : MonoBehaviour
         }
         GameObject newCar = _carList[carIndex];
 
-        if (selectedCar != null)
+        if (currentCar != null)
         {
-            Destroy(selectedCar.gameObject);
+            Destroy(currentCar.gameObject);
         }
 
-        selectedCar = Instantiate(newCar, carContainer).GetComponent<CarObject>();
+        currentCar = Instantiate(newCar, carContainer).GetComponent<Car>();
 
-        selectedCar.SetDefaults();
+        currentCar.SetDefaults();
         ResetMaterial();
     }
 
-    public CarObject GetSelectedCar()
+    public Car GetSelectedCar()
     {
-        return selectedCar;
+        return currentCar;
     }
 
+    /// <summary>
+    /// Get list of car prefabs
+    /// </summary>
     public List<GameObject> GetCarList()
     {
         GameObject[] returnList = new GameObject[_carList.Count];
@@ -84,33 +85,41 @@ public class CarConfigurator : MonoBehaviour
 
         return returnList.ToList();
     }
-   
 
+    /// <summary>
+    /// Select the category for tuning
+    /// </summary>
     public void SelectCategory(TuningCategory category)
     {
         selectedCategory = category;
     }
-
-    public void ApplyTuning(TuningAppliaple item)
+    
+    /// <summary>
+    /// Apply item by its index in currently selected category
+    /// </summary>
+    public void ApplyTuning(int index)
     {
-        selectedCar.ApplyTuningItem(selectedCategory, item);
+        currentCar.ApplyTuningItem(selectedCategory, index);
     }
 
+    /// <summary>
+    /// Reset car material properties
+    /// </summary>
     private void ResetMaterial()
     {
-        if (selectedCar.selectedMaterial == null)
+        if (currentCar.selectedMaterial == null)
             return;
 
-        selectedCar.carPaintMaterial.CopyPropertiesFromMaterial(selectedCar.selectedMaterial);
+        currentCar.carPaintMaterial.CopyPropertiesFromMaterial(currentCar.selectedMaterial);
     }
 
     public void Update()
     {
-        if (selectedCar == null || selectedCar.selectedMaterial == null)
+        if (currentCar == null || currentCar.selectedMaterial == null)
         {
             return;
         }
 
-        selectedCar.carPaintMaterial.Lerp(selectedCar.carPaintMaterial, selectedCar.selectedMaterial, materialChangeSpeed);
+        currentCar.carPaintMaterial.Lerp(currentCar.carPaintMaterial, currentCar.selectedMaterial, materialChangeSpeed);
     }
 }

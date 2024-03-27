@@ -7,8 +7,8 @@ public class TuningComponent : TuningAppliaple
 {
     public GameObject tuningItemPrefab;
 
-    public override void ApplyTuning(CarObject carObject)
+    public override void ApplyTuning(Car carObject, TuningCategory category)
     {
-        carObject.Apply(this);
+        category.InstantiateTuning(tuningItemPrefab);
     }
 }

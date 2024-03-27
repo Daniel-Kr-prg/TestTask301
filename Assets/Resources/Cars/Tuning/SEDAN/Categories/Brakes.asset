@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c2e4b9352d2c445a3a2c1890399b04, type: 3}
+  m_Name: Brakes
+  m_EditorClassIdentifier: 
+  itemName: Brakes
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 23032465375232
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  preview: {fileID: 21300000, guid: a89c1bd0d9cd567439abe5085bd86d65, type: 3}
+  isSelected: 0
+  defaultItem: {fileID: 11400000, guid: 7f0f8048620546e469aa7e0eb434f529, type: 2}
+  tuningItems:
+  - {fileID: 11400000, guid: 7f0f8048620546e469aa7e0eb434f529, type: 2}
+  references:
+    version: 2
+    RefIds: []

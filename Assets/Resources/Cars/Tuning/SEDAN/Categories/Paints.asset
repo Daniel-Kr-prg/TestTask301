@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c2e4b9352d2c445a3a2c1890399b04, type: 3}
+  m_Name: Paints
+  m_EditorClassIdentifier: 
+  itemName: Paints
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 12281629556736
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  preview: {fileID: 21300000, guid: e3c5ef920a6cafb4d94225fe0dc24e79, type: 3}
+  isSelected: 0
+  defaultItem: {fileID: 11400000, guid: 3cba389c46b6d8c4090ac692cc01dddc, type: 2}
+  tuningItems:
+  - {fileID: 11400000, guid: 495a6fc0d3e43284c8b68d61b9b10ad5, type: 2}
+  - {fileID: 11400000, guid: 1f2787ffb78965b45b5924a8ded73823, type: 2}
+  - {fileID: 11400000, guid: c91c7e3d1bb2a5e4d961316b5f841285, type: 2}
+  - {fileID: 11400000, guid: 506ae5a97d0b9be43913b322e7de825e, type: 2}
+  - {fileID: 11400000, guid: 537875c5b2b97af4e8a06b344ca69126, type: 2}
+  - {fileID: 11400000, guid: dcaa5307f91853f419e014ff09f1021c, type: 2}
+  - {fileID: 11400000, guid: 5e9d28aff62bf6445ac00b68a0c6d771, type: 2}
+  - {fileID: 11400000, guid: 84f4d08254063294f82ec03fa279ed43, type: 2}
+  - {fileID: 11400000, guid: 3cba389c46b6d8c4090ac692cc01dddc, type: 2}
+  - {fileID: 11400000, guid: 090b027c2d920b6438fb1977fe72db86, type: 2}
+  - {fileID: 11400000, guid: 2d339a6624e2a2043a34df807d00a10b, type: 2}
+  - {fileID: 11400000, guid: f906fea554e88504a9863de455898a9f, type: 2}
+  references:
+    version: 2
+    RefIds: []

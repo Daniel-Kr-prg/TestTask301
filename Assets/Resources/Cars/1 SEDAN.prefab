@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6525956143269729969}
   m_Layer: 0
-  m_Name: FR_CONTAINER
+  m_Name: FR container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,8 +41,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053003569836303153}
+  - component: {fileID: 3296773713074933351}
   m_Layer: 0
-  m_Name: BODY_ATTACHMENT
+  m_Name: Body category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,6 +65,22 @@ Transform:
   - {fileID: 1368637448233029575}
   m_Father: {fileID: 2668560643527017545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3296773713074933351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166582622618331541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childCategories: []
+  tuningInstanceContainers: []
+  tuningCategoryData: {fileID: 11400000, guid: 6a7eb77d4b332304dae4a7708a369069, type: 2}
+  cameraTarget: {fileID: 0}
 --- !u!1 &208523004055822761
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +92,7 @@ GameObject:
   - component: {fileID: 4186423628997231046}
   - component: {fileID: 9140756802112415534}
   m_Layer: 0
-  m_Name: EXHAUST_ATTACHMENT
+  m_Name: Exhaust category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,8 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentInstanceContainers:
+  childCategories: []
+  tuningInstanceContainers:
   - {fileID: 6557134318285822415}
+  tuningCategoryData: {fileID: 11400000, guid: 545444f37d425e44cbfb278b2cf7c255, type: 2}
   cameraTarget: {fileID: 1609465377246026588}
 --- !u!1 &509016365906734829
 GameObject:
@@ -207,7 +226,7 @@ GameObject:
   - component: {fileID: 3796515377548961766}
   - component: {fileID: 5720942573808412636}
   m_Layer: 0
-  m_Name: FOCUS_POINT
+  m_Name: FOCUS POINT
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -262,7 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5514150507091262286}
   m_Layer: 0
-  m_Name: SPOILER_CONTAINER
+  m_Name: Spoiler container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8316944106492500769}
   m_Layer: 0
-  m_Name: SCOOP_CONTAINER
+  m_Name: Scoop container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +427,7 @@ GameObject:
   - component: {fileID: 135577181463980294}
   - component: {fileID: 3781581564014150771}
   m_Layer: 0
-  m_Name: FOCUS_POINT
+  m_Name: FOCUS POINT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,62 +472,6 @@ MonoBehaviour:
   _minDistance: -4
   _maxDistance: -2.5
   _defaultDistance: -3.25
---- !u!1 &1463687378891897131
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6321918971997796620}
-  - component: {fileID: 8358757525965054372}
-  m_Layer: 0
-  m_Name: FOCUS_POINT
-  m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6321918971997796620
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463687378891897131}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.745, y: 0.894, z: 2.976}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3344036659082832736}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8358757525965054372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463687378891897131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0df8d976ac1f146bb27bea24f34e7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pitchClampAllowed: 1
-  _minPitch: 0
-  _maxPitch: 45
-  _defaultPitch: 0
-  _yawClampAllowed: 1
-  _minYaw: 140
-  _maxYaw: 190
-  _defaultYaw: 0
-  _zoomClampAllowed: 1
-  _minDistance: -2.5
-  _maxDistance: -0.5
-  _defaultDistance: 0
 --- !u!1 &2093755646581399213
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4446174389212909963}
   m_Layer: 0
-  m_Name: FL_CONTAINER
+  m_Name: FL container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6548648341890936801}
   m_Layer: 0
-  m_Name: WINDOWS_ATTACHMENT
+  m_Name: Windows category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6828556938437224664}
   m_Layer: 0
-  m_Name: RL_CONTAINER
+  m_Name: RL container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -616,7 +579,7 @@ GameObject:
   - component: {fileID: 7753790696208168215}
   - component: {fileID: 6074958863680680264}
   m_Layer: 0
-  m_Name: FOCUS_POINT
+  m_Name: FOCUS POINT
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -672,7 +635,7 @@ GameObject:
   - component: {fileID: 865770642328420336}
   - component: {fileID: 3900857982756099535}
   m_Layer: 0
-  m_Name: WHEELS_ATTACHMENT
+  m_Name: Disks category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,11 +672,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentInstanceContainers:
+  childCategories: []
+  tuningInstanceContainers:
   - {fileID: 2093755646581399213}
   - {fileID: 125842724614742059}
   - {fileID: 4335103317207781345}
   - {fileID: 8130232713086551328}
+  tuningCategoryData: {fileID: 11400000, guid: 9ffa788eec75644419257481683ffda3, type: 2}
   cameraTarget: {fileID: 6074958863680680264}
 --- !u!1 &4778499534136954900
 GameObject:
@@ -726,7 +691,7 @@ GameObject:
   - component: {fileID: 6226534926323641176}
   - component: {fileID: 3067337703585379639}
   m_Layer: 0
-  m_Name: BRAKES_ATTACHMENT
+  m_Name: Brakes category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,8 +726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentInstanceContainers:
+  childCategories: []
+  tuningInstanceContainers:
   - {fileID: 4982776030385555551}
+  tuningCategoryData: {fileID: 11400000, guid: 5f9c51b21a9a4a54b947fc203561f1b3, type: 2}
   cameraTarget: {fileID: 5720942573808412636}
 --- !u!1 &4982776030385555551
 GameObject:
@@ -774,7 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398297328278967186}
   m_Layer: 0
-  m_Name: BRAKES_CONTAINER
+  m_Name: Brakes container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,10 +772,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 893337143357667606}
-  - component: {fileID: 6526132278490609021}
   - component: {fileID: 6541498225195480572}
   - component: {fileID: 7640951187949769726}
   - component: {fileID: 3244231371609203575}
+  - component: {fileID: 3124855606021627722}
   m_Layer: 0
   m_Name: 1 SEDAN
   m_TagString: Untagged
@@ -833,172 +800,6 @@ Transform:
   - {fileID: 5757253711313559930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6526132278490609021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5039855920583631814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7446b8ed4f724e14b9fc7ce240d2c00d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carPaintMaterial: {fileID: 2100000, guid: 494d008ec5f7137448fcabb7e8752235, type: 2}
-  selectedMaterial: {fileID: 0}
-  car:
-    name: Sedan
-    localStr:
-      m_TableReference:
-        m_TableCollectionName: 
-      m_TableEntryReference:
-        m_KeyId: 0
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    categories:
-    - name: Paints
-      localStr:
-        m_TableReference:
-          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-        m_TableEntryReference:
-          m_KeyId: 12281629556736
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      categories: []
-      preview: {fileID: 21300000, guid: e3c5ef920a6cafb4d94225fe0dc24e79, type: 3}
-      defaultItem: {fileID: 11400000, guid: 3cba389c46b6d8c4090ac692cc01dddc, type: 2}
-      tuningItems:
-      - {fileID: 11400000, guid: 3cba389c46b6d8c4090ac692cc01dddc, type: 2}
-      - {fileID: 11400000, guid: 5e9d28aff62bf6445ac00b68a0c6d771, type: 2}
-      - {fileID: 11400000, guid: 84f4d08254063294f82ec03fa279ed43, type: 2}
-      - {fileID: 11400000, guid: 090b027c2d920b6438fb1977fe72db86, type: 2}
-      - {fileID: 11400000, guid: 2d339a6624e2a2043a34df807d00a10b, type: 2}
-      - {fileID: 11400000, guid: f906fea554e88504a9863de455898a9f, type: 2}
-      - {fileID: 11400000, guid: c91c7e3d1bb2a5e4d961316b5f841285, type: 2}
-      - {fileID: 11400000, guid: 495a6fc0d3e43284c8b68d61b9b10ad5, type: 2}
-      - {fileID: 11400000, guid: 1f2787ffb78965b45b5924a8ded73823, type: 2}
-      - {fileID: 11400000, guid: 506ae5a97d0b9be43913b322e7de825e, type: 2}
-      - {fileID: 11400000, guid: 537875c5b2b97af4e8a06b344ca69126, type: 2}
-      - {fileID: 11400000, guid: dcaa5307f91853f419e014ff09f1021c, type: 2}
-      attachment: {fileID: 0}
-    - name: Wheels
-      localStr:
-        m_TableReference:
-          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-        m_TableEntryReference:
-          m_KeyId: 22207332532224
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      categories:
-      - name: Tires and disks
-        localStr:
-          m_TableReference:
-            m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-          m_TableEntryReference:
-            m_KeyId: 22394851475456
-            m_Key: 
-          m_FallbackState: 0
-          m_WaitForCompletion: 0
-          m_LocalVariables: []
-        categories: []
-        preview: {fileID: 21300000, guid: 90eb6af1a75b3f549809fb589b4d36f8, type: 3}
-        defaultItem: {fileID: 11400000, guid: 8dc939c97c5bbbf4780cfe647228ad1f, type: 2}
-        tuningItems:
-        - {fileID: 11400000, guid: 8dc939c97c5bbbf4780cfe647228ad1f, type: 2}
-        - {fileID: 11400000, guid: ee80361a75bb53e47960b9b8e5733b37, type: 2}
-        - {fileID: 11400000, guid: 140a62facf9fae1498faefcf17f8bf32, type: 2}
-        - {fileID: 11400000, guid: 187e7c12b4ecdd841b12ced086c90f40, type: 2}
-        attachment: {fileID: 3900857982756099535}
-      - name: Brakes
-        localStr:
-          m_TableReference:
-            m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-          m_TableEntryReference:
-            m_KeyId: 23032465375232
-            m_Key: 
-          m_FallbackState: 0
-          m_WaitForCompletion: 0
-          m_LocalVariables: []
-        categories: []
-        preview: {fileID: 21300000, guid: a89c1bd0d9cd567439abe5085bd86d65, type: 3}
-        defaultItem: {fileID: 11400000, guid: 7f0f8048620546e469aa7e0eb434f529, type: 2}
-        tuningItems:
-        - {fileID: 11400000, guid: 7f0f8048620546e469aa7e0eb434f529, type: 2}
-        attachment: {fileID: 3067337703585379639}
-      preview: {fileID: 21300000, guid: 85043c6e981abef43bab0ff0aa8781b4, type: 3}
-      defaultItem: {fileID: 0}
-      tuningItems: []
-      attachment: {fileID: 7277822098641161194}
-    - name: Spoilers
-      localStr:
-        m_TableReference:
-          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-        m_TableEntryReference:
-          m_KeyId: 23286044606464
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      categories: []
-      preview: {fileID: 21300000, guid: 13fb919e3981cb242b3f03f8c8a74bb1, type: 3}
-      defaultItem: {fileID: 11400000, guid: b326b4016b605824eb5c74170bd5c96f, type: 2}
-      tuningItems:
-      - {fileID: 11400000, guid: b326b4016b605824eb5c74170bd5c96f, type: 2}
-      - {fileID: 11400000, guid: a2f5de3370a2e0c418c66cae2ffa9ad7, type: 2}
-      - {fileID: 11400000, guid: 1e8508f264e74694ea5e11d6389997ca, type: 2}
-      - {fileID: 11400000, guid: 8f2f7643a55f2fb40874fcbd900b843f, type: 2}
-      attachment: {fileID: 918440179516020934}
-    - name: Exhaust
-      localStr:
-        m_TableReference:
-          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-        m_TableEntryReference:
-          m_KeyId: 23403661279232
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      categories: []
-      preview: {fileID: 21300000, guid: c13f83c7db122fa4cb4dbf5f168e89ba, type: 3}
-      defaultItem: {fileID: 11400000, guid: 56baa9ad4c2a4d745adfad97096b6d88, type: 2}
-      tuningItems:
-      - {fileID: 11400000, guid: 56baa9ad4c2a4d745adfad97096b6d88, type: 2}
-      - {fileID: 11400000, guid: 6748d71596f0c0f479f273457f99385d, type: 2}
-      - {fileID: 11400000, guid: 038474adb2ada114eb28aefdaf4859a2, type: 2}
-      attachment: {fileID: 9140756802112415534}
-    - name: Scoop
-      localStr:
-        m_TableReference:
-          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
-        m_TableEntryReference:
-          m_KeyId: 23529217769472
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      categories: []
-      preview: {fileID: 21300000, guid: f0f1fe8b6e9664043889a01ee53ab7c6, type: 3}
-      defaultItem: {fileID: 11400000, guid: 068320602c22eb14a8dd8d329116de0e, type: 2}
-      tuningItems:
-      - {fileID: 11400000, guid: 068320602c22eb14a8dd8d329116de0e, type: 2}
-      - {fileID: 11400000, guid: 864dbddce99f44249b7da05892b64fd6, type: 2}
-      - {fileID: 11400000, guid: 87bc4fd83cc485049bf04f6a00feef22, type: 2}
-      - {fileID: 11400000, guid: d02246d9f1d313b4bb640179ab6b48e1, type: 2}
-      - {fileID: 11400000, guid: a08072149752a084ab8fa7f9ecb1ce3e, type: 2}
-      attachment: {fileID: 4062851346017568878}
-    preview: {fileID: 21300000, guid: 0c29aef60a83d9b4397502708ba3d5b2, type: 3}
-    carDescription: 
-    year: 0
-  references:
-    version: 2
-    RefIds: []
 --- !u!33 &6541498225195480572
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1070,6 +871,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3124855606021627722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039855920583631814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46796dc0d8e3ccd4aab8be0931634ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childCategories:
+  - {fileID: 3296773713074933351}
+  - {fileID: 7277822098641161194}
+  - {fileID: 918440179516020934}
+  - {fileID: 9140756802112415534}
+  - {fileID: 4062851346017568878}
+  tuningInstanceContainers: []
+  tuningCategoryData: {fileID: 11400000, guid: 26e2bd7c8feb4c94aaed835468f04805, type: 2}
+  cameraTarget: {fileID: 0}
+  carPaintMaterial: {fileID: 2100000, guid: 494d008ec5f7137448fcabb7e8752235, type: 2}
+  selectedMaterial: {fileID: 0}
 --- !u!1 &5168599158562087212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +905,7 @@ GameObject:
   - component: {fileID: 8589090796375954408}
   - component: {fileID: 1609465377246026588}
   m_Layer: 0
-  m_Name: FOCUS_POINT
+  m_Name: FOCUS POINT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,7 +1044,7 @@ GameObject:
   - component: {fileID: 6017014021390689026}
   - component: {fileID: 4062851346017568878}
   m_Layer: 0
-  m_Name: ROOF_SCOOP_ATTACHMENT
+  m_Name: Roof scoop category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1255,8 +1079,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentInstanceContainers:
+  childCategories: []
+  tuningInstanceContainers:
   - {fileID: 1421943035586812543}
+  tuningCategoryData: {fileID: 11400000, guid: 98d6169a5f01367419ed9b3891dc4e87, type: 2}
   cameraTarget: {fileID: 8193908978137338559}
 --- !u!1 &6027474580343822875
 GameObject:
@@ -1270,7 +1096,7 @@ GameObject:
   - component: {fileID: 4574808875729284697}
   - component: {fileID: 4738751322936188677}
   m_Layer: 0
-  m_Name: SEDAN MODEL
+  m_Name: Sedan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1360,7 +1186,7 @@ GameObject:
   - component: {fileID: 6548127892482012994}
   - component: {fileID: 918440179516020934}
   m_Layer: 0
-  m_Name: SPOILER_ATTACHMENT
+  m_Name: Spoiler category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1395,8 +1221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentInstanceContainers:
+  childCategories: []
+  tuningInstanceContainers:
   - {fileID: 1129823910149382954}
+  tuningCategoryData: {fileID: 11400000, guid: d0970fb41ed21404eb64c8b5bfb3167c, type: 2}
   cameraTarget: {fileID: 3781581564014150771}
 --- !u!1 &6491609631863643400
 GameObject:
@@ -1409,7 +1237,7 @@ GameObject:
   - component: {fileID: 5757253711313559930}
   - component: {fileID: 2628429456622322672}
   m_Layer: 0
-  m_Name: SEDAN_COLLIDER
+  m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1462,7 +1290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6944188791748264262}
   m_Layer: 0
-  m_Name: EXHAUST_CONTAINER
+  m_Name: Exhaust container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1495,7 +1323,7 @@ GameObject:
   - component: {fileID: 1053378007378440821}
   - component: {fileID: 7187837652030866258}
   m_Layer: 0
-  m_Name: WINDOWS
+  m_Name: windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,7 +1404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3267804958964211525}
   m_Layer: 0
-  m_Name: CONTAINER
+  m_Name: container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1608,7 +1436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6389132283820081259}
   m_Layer: 0
-  m_Name: R_LAMPS_ATTACHMENT
+  m_Name: R_Lamps category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1640,7 +1468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5717292862597177058}
   m_Layer: 0
-  m_Name: RR_CONTAINER
+  m_Name: RR container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1672,7 +1500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3344036659082832736}
   m_Layer: 0
-  m_Name: F_LAMPS_ATTACHMENT
+  m_Name: F_Lamps category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1691,7 +1519,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6321918971997796620}
   - {fileID: 3267804958964211525}
   m_Father: {fileID: 2668560643527017545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1706,7 +1533,7 @@ GameObject:
   - component: {fileID: 1908505554954510729}
   - component: {fileID: 8193908978137338559}
   m_Layer: 0
-  m_Name: FOCUS_POINT
+  m_Name: FOCUS POINT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1762,7 +1589,7 @@ GameObject:
   - component: {fileID: 7258916215615022784}
   - component: {fileID: 7277822098641161194}
   m_Layer: 0
-  m_Name: WHEELS_ATTACHMENT
+  m_Name: Wheels category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,7 +1625,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentInstanceContainers: []
+  childCategories:
+  - {fileID: 3067337703585379639}
+  - {fileID: 3900857982756099535}
+  tuningInstanceContainers: []
+  tuningCategoryData: {fileID: 11400000, guid: ad9dc92955d909e4185a157b431af38c, type: 2}
   cameraTarget: {fileID: 6074958863680680264}
 --- !u!1001 &529228507553682864
 PrefabInstance:

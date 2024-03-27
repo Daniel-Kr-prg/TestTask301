@@ -8,9 +8,9 @@ public abstract class TuningBase : ScriptableObject
 {
     public string itemName;
     public LocalizedString localStr;
-
     public Sprite preview;
+    public bool isSelected = false;
 
-    [HideInInspector]
-    public bool isSelected;
+    public virtual void Select() { }
+    public virtual void Deselect() { }
 }
