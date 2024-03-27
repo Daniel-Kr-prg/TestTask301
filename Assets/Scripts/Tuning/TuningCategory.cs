@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.Localization;
 
 [System.Serializable]
 public class TuningCategory : TuningList
@@ -57,6 +57,7 @@ public class TuningCategory : TuningList
 public class TuningList
 {
     public string name;
+    public LocalizedString localStr;
 
     public List<TuningCategory> categories = new List<TuningCategory>();
     

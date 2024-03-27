@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Attachment : MonoBehaviour
 {
+
+
     [SerializeField]
     private List<GameObject> attachmentInstanceContainers;
 

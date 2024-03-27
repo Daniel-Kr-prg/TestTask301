@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Matte Pink
   m_EditorClassIdentifier: 
   itemName: Matte Pink
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 26292999864320
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   preview: {fileID: 21300000, guid: 558f12ca165be604e944be5dd862acb7, type: 3}
   isSelected: 0
   material: {fileID: 2100000, guid: 28013d5636bca824180a6daf70a8ad21, type: 2}
+  references:
+    version: 2
+    RefIds: []

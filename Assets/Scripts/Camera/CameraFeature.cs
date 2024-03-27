@@ -15,6 +15,8 @@ public class CameraFeature : MonoBehaviour
         }
     }
 
+    private bool effectIsActive = true;
+
     private bool _initialized;
 
     public virtual void Start()
@@ -40,6 +42,7 @@ public class CameraFeature : MonoBehaviour
         cameraHandler.mouseMoveEvent?.AddListener(OnMouseMoveHandle);
         cameraHandler.mouseScrollEvent?.AddListener(OnMouseScrollHandle);
         cameraHandler.targetChanged?.AddListener(OnTargetChanged);
+        cameraHandler.cameraStateChanged?.AddListener(OnCameraStateChanged);
 
         OnTargetChanged();
 
@@ -60,4 +63,5 @@ public class CameraFeature : MonoBehaviour
     protected virtual void OnMouseUpHandle() { }
     protected virtual void OnMouseMoveHandle() { }
     protected virtual void OnTargetChanged() { }
+    protected virtual void OnCameraStateChanged(CameraState state) { }
 }

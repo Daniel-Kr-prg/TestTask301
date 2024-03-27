@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Matte Yellow
   m_EditorClassIdentifier: 
   itemName: Matte Yellow
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 26396720807936
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   preview: {fileID: 21300000, guid: 198fb1552f8e12e40a8abf439b425951, type: 3}
   isSelected: 0
   material: {fileID: 2100000, guid: 94d3203cd59c42a429f946574e5f6ee6, type: 2}
+  references:
+    version: 2
+    RefIds: []

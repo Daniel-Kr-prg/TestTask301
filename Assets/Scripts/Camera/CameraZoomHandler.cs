@@ -8,6 +8,9 @@ public class CameraZoomHandler : CameraFeature
     [SerializeField]
     private float zoomMultiplier = 5f;
 
+    [SerializeField]
+    private float _idleZoomDistance;
+
     private float targetZoomValue;
 
 
@@ -31,9 +34,16 @@ public class CameraZoomHandler : CameraFeature
 
     protected override void ApplyEffectToCamera()
     {
-        if (options.IsZoomClampAllowed)
+        if (cameraHandler.state == CameraState.Active)
         {
-            targetZoomValue = Mathf.Clamp(targetZoomValue, options.MinZoomDistance, options.MaxZoomDistance);
+            if (options.IsZoomClampAllowed)
+            {
+                targetZoomValue = Mathf.Clamp(targetZoomValue, options.MinZoomDistance, options.MaxZoomDistance);
+            }
+        }
+        else
+        {
+            targetZoomValue = _idleZoomDistance;
         }
 
         float distance = Mathf.Lerp(cameraTransform.localPosition.z, targetZoomValue, zoomSpeed * Time.deltaTime);

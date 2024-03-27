@@ -849,8 +849,26 @@ MonoBehaviour:
   selectedMaterial: {fileID: 0}
   car:
     name: Sedan
+    localStr:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     categories:
     - name: Paints
+      localStr:
+        m_TableReference:
+          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+        m_TableEntryReference:
+          m_KeyId: 12281629556736
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
       categories: []
       preview: {fileID: 21300000, guid: e3c5ef920a6cafb4d94225fe0dc24e79, type: 3}
       defaultItem: {fileID: 11400000, guid: 3cba389c46b6d8c4090ac692cc01dddc, type: 2}
@@ -869,8 +887,26 @@ MonoBehaviour:
       - {fileID: 11400000, guid: dcaa5307f91853f419e014ff09f1021c, type: 2}
       attachment: {fileID: 0}
     - name: Wheels
+      localStr:
+        m_TableReference:
+          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+        m_TableEntryReference:
+          m_KeyId: 22207332532224
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
       categories:
       - name: Tires and disks
+        localStr:
+          m_TableReference:
+            m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+          m_TableEntryReference:
+            m_KeyId: 22394851475456
+            m_Key: 
+          m_FallbackState: 0
+          m_WaitForCompletion: 0
+          m_LocalVariables: []
         categories: []
         preview: {fileID: 21300000, guid: 90eb6af1a75b3f549809fb589b4d36f8, type: 3}
         defaultItem: {fileID: 11400000, guid: 8dc939c97c5bbbf4780cfe647228ad1f, type: 2}
@@ -881,6 +917,15 @@ MonoBehaviour:
         - {fileID: 11400000, guid: 187e7c12b4ecdd841b12ced086c90f40, type: 2}
         attachment: {fileID: 3900857982756099535}
       - name: Brakes
+        localStr:
+          m_TableReference:
+            m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+          m_TableEntryReference:
+            m_KeyId: 23032465375232
+            m_Key: 
+          m_FallbackState: 0
+          m_WaitForCompletion: 0
+          m_LocalVariables: []
         categories: []
         preview: {fileID: 21300000, guid: a89c1bd0d9cd567439abe5085bd86d65, type: 3}
         defaultItem: {fileID: 11400000, guid: 7f0f8048620546e469aa7e0eb434f529, type: 2}
@@ -892,6 +937,15 @@ MonoBehaviour:
       tuningItems: []
       attachment: {fileID: 7277822098641161194}
     - name: Spoilers
+      localStr:
+        m_TableReference:
+          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+        m_TableEntryReference:
+          m_KeyId: 23286044606464
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
       categories: []
       preview: {fileID: 21300000, guid: 13fb919e3981cb242b3f03f8c8a74bb1, type: 3}
       defaultItem: {fileID: 11400000, guid: b326b4016b605824eb5c74170bd5c96f, type: 2}
@@ -902,6 +956,15 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8f2f7643a55f2fb40874fcbd900b843f, type: 2}
       attachment: {fileID: 918440179516020934}
     - name: Exhaust
+      localStr:
+        m_TableReference:
+          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+        m_TableEntryReference:
+          m_KeyId: 23403661279232
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
       categories: []
       preview: {fileID: 21300000, guid: c13f83c7db122fa4cb4dbf5f168e89ba, type: 3}
       defaultItem: {fileID: 11400000, guid: 56baa9ad4c2a4d745adfad97096b6d88, type: 2}
@@ -911,6 +974,15 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 038474adb2ada114eb28aefdaf4859a2, type: 2}
       attachment: {fileID: 9140756802112415534}
     - name: Scoop
+      localStr:
+        m_TableReference:
+          m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+        m_TableEntryReference:
+          m_KeyId: 23529217769472
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
       categories: []
       preview: {fileID: 21300000, guid: f0f1fe8b6e9664043889a01ee53ab7c6, type: 3}
       defaultItem: {fileID: 11400000, guid: 068320602c22eb14a8dd8d329116de0e, type: 2}
@@ -924,6 +996,9 @@ MonoBehaviour:
     preview: {fileID: 21300000, guid: 0c29aef60a83d9b4397502708ba3d5b2, type: 3}
     carDescription: 
     year: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!33 &6541498225195480572
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1596,7 +1671,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3344036659082832736}
-  - component: {fileID: 5670622018453228487}
   m_Layer: 0
   m_Name: F_LAMPS_ATTACHMENT
   m_TagString: Untagged
@@ -1621,21 +1695,6 @@ Transform:
   - {fileID: 3267804958964211525}
   m_Father: {fileID: 2668560643527017545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5670622018453228487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8809340758438477449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c37a73cbe946c44d87f3a0496598378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachmentInstanceContainers:
-  - {fileID: 3267804958964211525}
-  cameraTarget: {fileID: 8358757525965054372}
 --- !u!1 &8928809100316196394
 GameObject:
   m_ObjectHideFlags: 0

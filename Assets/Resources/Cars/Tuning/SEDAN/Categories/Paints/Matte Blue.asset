@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Matte Blue
   m_EditorClassIdentifier: 
   itemName: Matte Blue
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 24912830578688
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   preview: {fileID: 21300000, guid: b8ac2f143b109d94c868fd7f24b169d0, type: 3}
   isSelected: 0
   material: {fileID: 2100000, guid: 8b849c16b16c2e44f94068f719ff70c1, type: 2}
+  references:
+    version: 2
+    RefIds: []

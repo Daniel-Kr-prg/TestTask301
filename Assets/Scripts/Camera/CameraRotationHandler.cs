@@ -10,6 +10,12 @@ public class CameraRotationHandler : CameraFeature
     [SerializeField]
     private float _mouseMoveMultiplier = 5f;
 
+    [SerializeField]
+    private float _idlePitch;
+
+    [SerializeField]
+    private float _idleYawSpeed;
+
     private bool _mouseIsDown = false;
 
 
@@ -17,14 +23,21 @@ public class CameraRotationHandler : CameraFeature
 
     protected override void ApplyEffectToCamera()
     {
-        if (options.IsPitchClampAllowed)
+        if (cameraHandler.state == CameraState.Active)
         {
-            _targetRotation.x = Mathf.Clamp(_targetRotation.x, options.MinPitch, options.MaxPitch);
-        }
+            if (options.IsPitchClampAllowed)
+            {
+                _targetRotation.x = Mathf.Clamp(_targetRotation.x, options.MinPitch, options.MaxPitch);
+            }
 
-        if (options.IsYawClampAllowed)
+            if (options.IsYawClampAllowed)
+            {
+                _targetRotation.y = Mathf.Clamp(_targetRotation.y, options.MinYaw, options.MaxYaw);
+            }
+        }
+        else
         {
-            _targetRotation.y = Mathf.Clamp(_targetRotation.y, options.MinYaw, options.MaxYaw);
+            _targetRotation.y += _idleYawSpeed * Time.deltaTime;
         }
 
         Quaternion rotation = Quaternion.Euler(_targetRotation.x, _targetRotation.y, 0);
@@ -61,5 +74,10 @@ public class CameraRotationHandler : CameraFeature
     {
         _targetRotation.x = options.DefaultPitch;
         _targetRotation.y = options.DefaultYaw;
+    }
+
+    protected override void OnCameraStateChanged(CameraState state)
+    {
+        _targetRotation.x = _idlePitch;
     }
 }

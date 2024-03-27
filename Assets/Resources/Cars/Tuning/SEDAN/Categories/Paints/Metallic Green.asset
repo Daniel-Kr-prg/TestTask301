@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Metallic Green
   m_EditorClassIdentifier: 
   itemName: Metallic Green
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 26737050828800
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   preview: {fileID: 21300000, guid: e75b5e1ac6f0c1d43b82f871b00f8dde, type: 3}
   isSelected: 0
   material: {fileID: 2100000, guid: 3ae8ee9b5629bb349a8952577c5ead6b, type: 2}
+  references:
+    version: 2
+    RefIds: []

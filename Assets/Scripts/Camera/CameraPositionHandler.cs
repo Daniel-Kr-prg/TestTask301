@@ -9,6 +9,13 @@ public class CameraPositionHandler : CameraFeature
 
     protected override void ApplyEffectToCamera()
     {
-        cameraPivot.position = Vector3.Lerp(cameraPivot.position, cameraHandler.GetTargetPosition(), moveSpeed * Time.deltaTime);
+        if (cameraHandler.state == CameraState.Active)
+        {
+            cameraPivot.position = Vector3.Lerp(cameraPivot.position, cameraHandler.GetTargetPosition(), moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            cameraPivot.position = Vector3.Lerp(cameraPivot.position, cameraHandler.GetDefaultTargetPosition(), moveSpeed * Time.deltaTime);
+        }
     }
 }

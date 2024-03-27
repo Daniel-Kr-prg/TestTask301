@@ -22,8 +22,6 @@ public class CarConfigurator : MonoBehaviour
     
     private CarObject selectedCar;
 
-    //private CarConfiguration carConfiguration;
-
     private TuningCategory selectedCategory;
 
     private List<GameObject> _carList = new List<GameObject>();
@@ -72,7 +70,6 @@ public class CarConfigurator : MonoBehaviour
 
         selectedCar.SetDefaults();
         ResetMaterial();
-        //carConfiguration.carCode = car.description.code;
     }
 
     public CarObject GetSelectedCar()
@@ -87,33 +84,7 @@ public class CarConfigurator : MonoBehaviour
 
         return returnList.ToList();
     }
-
-    //private void HandleComponentApply(TuningComponent tuningComponent)
-    //{
-    //    if (tuningComponent == null)
-    //    {
-    //        Debug.LogError("Can't apply tuning, because tuning item is null");
-    //        return;
-    //    }
-
-    //    if (tuningComponent.isDefault && carConfiguration.appliedComponents.ContainsKey(selectedCategoryCode))
-    //    {
-    //        carConfiguration.appliedComponents.Remove(selectedCategoryCode);
-    //    }
-    //    else
-    //    {
-    //        if (carConfiguration.appliedComponents.ContainsKey(selectedCategoryCode))
-    //        {
-    //            carConfiguration.appliedComponents[selectedCategoryCode] = tuningComponent.description.code;
-    //        }
-    //        else
-    //        {
-    //            carConfiguration.appliedComponents.Add(selectedCategoryCode, tuningComponent.description.code);
-    //        }
-    //    }
-    //}
-
-    
+   
 
     public void SelectCategory(TuningCategory category)
     {

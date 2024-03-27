@@ -3,19 +3,37 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 public class UIItem : MonoBehaviour
 {
     public UnityEvent buttonPressEvent;
 
-    public Image itemImage;
+    [SerializeField]
+    private Image itemImage;
 
-    public GameObject selectedImageObject;
+    [SerializeField]
+    private GameObject selectedImageObject;
 
-    public TMP_Text itemText;
+    [SerializeField]
+    private TMP_Text itemText;
 
     public TuningBase connectedItem;
+
+
+    public void SetItem(Sprite image, string text, LocalizedString localStr, TuningBase connectedItem, UnityAction call)
+    {
+        SetText(text);
+        SetLocalizationReference(localStr);
+
+        SetImage(image);
+        this.connectedItem = connectedItem;
+
+        buttonPressEvent.RemoveAllListeners();
+        buttonPressEvent.AddListener(call);
+    }
 
     public void InvokeButtonPress()
     {
@@ -25,9 +43,15 @@ public class UIItem : MonoBehaviour
         }
     }
 
-    public void SetText(string newText)
+    public void SetText(string text)
     {
-        itemText.text = newText;
+        itemText.text = text;
+    }
+
+    public void SetLocalizationReference(LocalizedString str)
+    {
+        LocalizeStringEvent lse = GetComponentInChildren<LocalizeStringEvent>();
+        lse.StringReference = new LocalizedString(str.TableReference, str.TableEntryReference);
     }
 
     public void SetImage(Sprite sprite)

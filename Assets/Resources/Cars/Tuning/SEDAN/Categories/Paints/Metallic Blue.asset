@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Metallic Blue
   m_EditorClassIdentifier: 
   itemName: Metallic Blue
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 26587330953216
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   preview: {fileID: 21300000, guid: 538d6b5ba4bd7d74db060c8fb9ba559c, type: 3}
   isSelected: 0
   material: {fileID: 2100000, guid: 6d55e08f193c09c4bb23bb3b133567e0, type: 2}
+  references:
+    version: 2
+    RefIds: []

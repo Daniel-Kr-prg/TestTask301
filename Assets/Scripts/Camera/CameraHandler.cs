@@ -255,6 +255,11 @@ public class CameraHandler : MonoBehaviour
         _defaultTarget = newDefaultTarget;
     }
 
+    public Vector3 GetDefaultTargetPosition()
+    {
+        return new Vector3(_defaultTarget.transform.position.x, _defaultTarget.transform.position.y, _defaultTarget.transform.position.z);
+    }
+
     private void UpdateIdleTime()
     {
         _currentIdleTime = _timeToGoIdle;

@@ -1,6 +1,7 @@
 using DanielLochner.Assets.SimpleScrollSnap;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -163,12 +164,7 @@ public class UIHandler : MonoBehaviour
 
         UIItem item = _scrollSnap.Content.GetChild(_scrollSnap.Content.childCount - 1).GetComponent<UIItem>();
         
-        item.SetText(connectedItem.itemName);
-        item.SetImage(connectedItem.preview);
-
-        item.connectedItem = connectedItem;
-
-        item.buttonPressEvent.AddListener(call);
+        item.SetItem(connectedItem.preview, connectedItem.name, connectedItem.localStr, connectedItem, call);
     }
 
     private void CreateElement(TuningList listItem, UnityAction call)
@@ -177,10 +173,7 @@ public class UIHandler : MonoBehaviour
 
         UIItem item = _scrollSnap.Content.GetChild(_scrollSnap.Content.childCount - 1).GetComponent<UIItem>();
 
-        item.SetText(listItem.name);
-        item.SetImage(listItem.preview);
-
-        item.buttonPressEvent.AddListener(call);
+        item.SetItem(listItem.preview, listItem.name, listItem.localStr, null, call);
     }
 
     public void SelectComponent(CarConfigurator configurator, TuningAppliaple item)
