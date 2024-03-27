@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577594cc550d3e54aa8958e8c552dd4d, type: 3}
+  m_Name: Matte Black
+  m_EditorClassIdentifier: 
+  itemName: Matte Black
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 24630327427072
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  preview: {fileID: 21300000, guid: 42980e2b795d4d64b87e3c9282dd9d60, type: 3}
+  isSelected: 0
+  material: {fileID: 2100000, guid: 6ce75659f0d60f04a8c0c2cf648e4b5e, type: 2}
+  references:
+    version: 2
+    RefIds: []

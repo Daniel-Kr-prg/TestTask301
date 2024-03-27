@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: table_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: fd81ecd74a75579499bce8240d40d14e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4158739103744
+    m_Localized: "P\u0159edchoz\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4293615337472
+    m_Localized: "Dal\u0161\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4356030775296
+    m_Localized: "Zp\u011Bt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12281629556736
+    m_Localized: Barvy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22207332532224
+    m_Localized: Kola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22394851475456
+    m_Localized: Pneumatiky a disky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23032465375232
+    m_Localized: Brzdy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23286044606464
+    m_Localized: Spojlery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23403661279232
+    m_Localized: "V\xFDfuk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23529217769472
+    m_Localized: Scoop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24630327427072
+    m_Localized: "Matn\u011B \u010Dern\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24912830578688
+    m_Localized: "Matn\u011B modr\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670376407040
+    m_Localized: "Matn\u011B \u0161ed\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25586561630208
+    m_Localized: "Matn\u011B zelen\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26292999864320
+    m_Localized: "Matn\u011B r\u016F\u017Eov\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26396720807936
+    m_Localized: "Matn\u011B \u017Elut\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26493940580352
+    m_Localized: "Metalick\xE1 \u010Dern\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26587330953216
+    m_Localized: "Metalick\xE1 modr\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26663440793600
+    m_Localized: "Metalick\xE1 \u0161ed\xE1\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26737050828800
+    m_Localized: "Metalick\xE1 zelen\xE1\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26812024012800
+    m_Localized: "Metalick\xE1 r\u016F\u017Eov\xE1\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26887521484800
+    m_Localized: "Metalick\xE1 \u017Elut\xE1\r"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

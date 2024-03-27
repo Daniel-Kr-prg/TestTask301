@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: table_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: fd81ecd74a75579499bce8240d40d14e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4158739103744
+    m_Localized: Previous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4293615337472
+    m_Localized: 'Next
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4356030775296
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12281629556736
+    m_Localized: Paints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22207332532224
+    m_Localized: Wheels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22394851475456
+    m_Localized: Tires and disks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23032465375232
+    m_Localized: Brakes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23286044606464
+    m_Localized: Spoilers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23403661279232
+    m_Localized: Exhaust
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23529217769472
+    m_Localized: Scoop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24630327427072
+    m_Localized: Matte Black
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24912830578688
+    m_Localized: Matte Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670376407040
+    m_Localized: Matte Gray
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25586561630208
+    m_Localized: Matte Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26292999864320
+    m_Localized: Matte Pink
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26396720807936
+    m_Localized: Matte Yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26493940580352
+    m_Localized: Metallic Black
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26587330953216
+    m_Localized: Metallic Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26663440793600
+    m_Localized: Metallic Gray
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26737050828800
+    m_Localized: Metallic Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26812024012800
+    m_Localized: Metallic Pink
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26887521484800
+    m_Localized: Metallic Yellow
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

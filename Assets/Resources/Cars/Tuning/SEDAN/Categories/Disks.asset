@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c2e4b9352d2c445a3a2c1890399b04, type: 3}
+  m_Name: Disks
+  m_EditorClassIdentifier: 
+  itemName: Tires and disks
+  localStr:
+    m_TableReference:
+      m_TableCollectionName: GUID:fd81ecd74a75579499bce8240d40d14e
+    m_TableEntryReference:
+      m_KeyId: 22394851475456
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  preview: {fileID: 21300000, guid: 85043c6e981abef43bab0ff0aa8781b4, type: 3}
+  isSelected: 0
+  defaultItem: {fileID: 11400000, guid: 8dc939c97c5bbbf4780cfe647228ad1f, type: 2}
+  tuningItems:
+  - {fileID: 11400000, guid: 8dc939c97c5bbbf4780cfe647228ad1f, type: 2}
+  - {fileID: 11400000, guid: ee80361a75bb53e47960b9b8e5733b37, type: 2}
+  - {fileID: 11400000, guid: 140a62facf9fae1498faefcf17f8bf32, type: 2}
+  - {fileID: 11400000, guid: 187e7c12b4ecdd841b12ced086c90f40, type: 2}
+  references:
+    version: 2
+    RefIds: []
